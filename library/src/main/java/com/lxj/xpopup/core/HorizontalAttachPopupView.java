@@ -3,7 +3,7 @@ package com.lxj.xpopup.core;
 import android.content.Context;
 import android.graphics.Rect;
 import android.os.Build;
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 
 import com.lxj.xpopup.animator.PopupAnimator;
 import com.lxj.xpopup.animator.ScrollScaleAnimator;

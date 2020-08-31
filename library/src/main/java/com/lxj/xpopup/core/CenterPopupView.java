@@ -1,8 +1,8 @@
 package com.lxj.xpopup.core;
 
 import android.content.Context;
-import androidx.annotation.NonNull;
 
+import android.support.annotation.NonNull;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -56,10 +56,12 @@ public class CenterPopupView extends BasePopupView {
      *
      * @return
      */
+    @Override
     protected int getImplLayoutId() {
         return 0;
     }
 
+    @Override
     protected int getMaxWidth() {
         return popupInfo.maxWidth==0 ? (int) (XPopupUtils.getWindowWidth(getContext()) * 0.86f)
                 : popupInfo.maxWidth;

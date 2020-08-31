@@ -1,5 +1,7 @@
 package com.lxj.xpopup.interfaces;
 
+import com.lxj.xpopup.core.BasePopupView;
+
 /**
  * Description: XPopup显示和隐藏的回调接口，如果你不想重写3个方法，则可以使用SimpleCallback，
  * 它是一个默认实现类
@@ -25,6 +27,8 @@ public interface XPopupCallback {
      * 完全消失的时候执行
      */
     void onDismiss();
+
+    void beforeDismiss();
 
     /**
      * 暴漏返回按键的处理，如果返回true，XPopup不会处理；如果返回false，XPopup会处理，
