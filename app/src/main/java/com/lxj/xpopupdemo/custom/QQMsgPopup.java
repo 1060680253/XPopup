@@ -2,7 +2,10 @@ package com.lxj.xpopupdemo.custom;
 
 import android.content.Context;
 
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
 
 import com.lxj.xpopup.core.PositionPopupView;
 import com.lxj.xpopupdemo.R;

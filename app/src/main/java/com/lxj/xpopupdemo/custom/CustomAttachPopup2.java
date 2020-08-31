@@ -2,7 +2,7 @@ package com.lxj.xpopupdemo.custom;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 
 import com.lxj.xpopup.core.AttachPopupView;
 import com.lxj.xpopupdemo.R;
