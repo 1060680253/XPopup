@@ -231,6 +231,11 @@ public class XPopup {
             return this;
         }
 
+        public Builder moveUpToFocusEt(Boolean isMoveUpToKeyboard) {
+            this.popupInfo.isMoveUpToFocusEt = isMoveUpToKeyboard;
+            return this;
+        }
+
         /**
          * 设置弹窗出现在目标的什么位置，有四种取值：Left，Right，Top，Bottom。这种手动设置位置的行为
          * 只对Attach弹窗和Drawer弹窗生效。

@@ -319,6 +319,7 @@ public class QuickStartDemo extends BaseFragment implements View.OnClickListener
             case R.id.btnCustomEditPopup: //自定义依附在输入法之上的Bottom弹窗
                 new XPopup.Builder(getContext())
                         .autoOpenSoftInput(true)
+                        .moveUpToFocusEt(true)
                         .asCustom(new CustomEditTextBottomPopup(getContext()))
                         .show();
                 break;

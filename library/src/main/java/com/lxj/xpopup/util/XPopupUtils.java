@@ -22,6 +22,7 @@ import android.renderscript.Element;
 import android.renderscript.RenderScript;
 import android.renderscript.ScriptIntrinsicBlur;
 import android.support.annotation.FloatRange;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -268,9 +269,14 @@ public class XPopupUtils {
             dy = Math.max(0, targetY);
         } else if (pv instanceof BottomPopupView) {
             dy = keyboardHeight;
-            if (focusEt != null && focusEtTop - dy < 0) {
-                dy += focusEtTop - dy - getStatusBarHeight();//限制不能被状态栏遮住
+            if(pv.popupInfo.isMoveUpToFocusEt){
+                dy = focusEt.getBottom();
+            }else{
+                if (focusEt != null && focusEtTop - dy < 0) {
+                    dy += focusEtTop - dy - getStatusBarHeight();//限制不能被状态栏遮住
+                }
             }
+
         } else if (isBottomPartShadow(pv) || pv instanceof DrawerPopupView) {
             int overflowHeight = (focusBottom + keyboardHeight) - windowHeight;
             if (focusEt != null && overflowHeight > 0) {

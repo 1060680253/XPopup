@@ -41,7 +41,7 @@ publish {
     userOrg = '1025310276'
     groupId = 'com.ch'
     artifactId = 'xpopup'
-    publishVersion = '1.8.11'
+    publishVersion = '1.8.12'
     repoName = 'maven'
     desc = '非androidx版本，修复部分手机底部空白问题'
     website = 'https://github.com/1060680253/XPopup'
