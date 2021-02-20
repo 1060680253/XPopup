@@ -22,7 +22,6 @@ import android.renderscript.Element;
 import android.renderscript.RenderScript;
 import android.renderscript.ScriptIntrinsicBlur;
 import android.support.annotation.FloatRange;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,6 +31,7 @@ import android.view.animation.OvershootInterpolator;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.Toast;
+
 import com.lxj.xpopup.core.AttachPopupView;
 import com.lxj.xpopup.core.BasePopupView;
 import com.lxj.xpopup.core.BottomPopupView;
@@ -267,16 +267,36 @@ public class XPopupUtils {
                 targetY += focusEtTop - targetY - getStatusBarHeight();//限制不能被状态栏遮住
             }
             dy = Math.max(0, targetY);
+
+            if(pv.popupInfo.isMoveUpToFocusEt&&focusEt!=null){
+                View targetView = focusEt;
+                int temp = targetView.getBottom();
+                while (targetView.getParent()!=null&&targetView.getParent()!=pv.getPopupImplView()){
+                    targetView = (View)targetView.getParent();
+                    temp = temp+targetView.getTop();
+                }
+                int targetBottom = popupHeight-temp;
+                if(targetY>targetBottom){
+                    dy = targetY -targetBottom;
+                }else{
+                    dy = 0;
+                }
+            }
         } else if (pv instanceof BottomPopupView) {
             dy = keyboardHeight;
-            if(pv.popupInfo.isMoveUpToFocusEt){
-                dy = focusEt.getBottom();
+            if(pv.popupInfo.isMoveUpToFocusEt&&focusEt!=null){
+                View targetView = focusEt;
+                int temp = targetView.getBottom();
+                while (targetView.getParent()!=null&&targetView.getParent()!=pv.getPopupImplView()){
+                    targetView = (View)targetView.getParent();
+                    temp = temp+targetView.getTop();
+                }
+                dy = keyboardHeight-(popupHeight-temp);
             }else{
                 if (focusEt != null && focusEtTop - dy < 0) {
                     dy += focusEtTop - dy - getStatusBarHeight();//限制不能被状态栏遮住
                 }
             }
-
         } else if (isBottomPartShadow(pv) || pv instanceof DrawerPopupView) {
             int overflowHeight = (focusBottom + keyboardHeight) - windowHeight;
             if (focusEt != null && overflowHeight > 0) {

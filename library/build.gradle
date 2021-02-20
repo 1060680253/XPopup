@@ -4,7 +4,7 @@ android {
     compileSdkVersion 28
 
     defaultConfig {
-        minSdkVersion 17
+        minSdkVersion 16
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
@@ -41,10 +41,26 @@ publish {
     userOrg = '1025310276'
     groupId = 'com.ch'
     artifactId = 'xpopup'
-    publishVersion = '1.8.12'
+    publishVersion = '1.8.13'
     repoName = 'maven'
     desc = '非androidx版本，修复部分手机底部空白问题'
     website = 'https://github.com/1060680253/XPopup'
+}
+apply plugin: 'maven'
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: 'https://packages.aliyun.com/maven/repository/2057903-release-5AZ2ou/') {
+                authentication(
+                        userName: '5fd89d58ed01613630236e48',
+                        password: 'VaA6KzwcORfD'
+                )
+            }
+            pom.version = '1.8.13'
+            pom.artifactId = 'xpopup'
+            pom.groupId = 'com.ch'
+        }
+    }
 }
 
 
